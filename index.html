@@ -128,18 +128,35 @@ tr.mine td{background:var(--tang-soft)}
 .tabs button:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
 .dayhead{margin:14px 0 6px;font-weight:600}
 .tl{list-style:none;margin:0;padding:0}
-.tl li{display:grid;grid-template-columns:7.2rem 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
-.tl li:last-child{border-bottom:0}
-.tl .t{color:var(--sea);font-size:.92rem;padding-top:1px}
-.tl .what{min-width:0}
-.tl .what b{font-weight:600}
-.tl .sub{display:block;font-size:.86rem;color:var(--ink-2)}
-.tl li.meal .what b::after{content:"식사";margin-left:6px;font-size:.7rem;font-weight:600;padding:1px 6px;border-radius:999px;background:var(--tang-soft);color:var(--tang);vertical-align:2px}
+.tl>li{display:grid;grid-template-columns:7.2rem 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.tl>li:last-child{border-bottom:0}
+.tl>li>.t{color:var(--sea);font-size:.92rem;padding-top:1px}
+.tl>li>.what{min-width:0}
+.tl>li>.what>b{font-weight:600}
+.tl>li>.what>.sub{display:block;font-size:.86rem;color:var(--ink-2)}
+.tl>li.meal>.what>b::after{content:"식사";margin-left:6px;font-size:.7rem;font-weight:600;padding:1px 6px;border-radius:999px;background:var(--tang-soft);color:var(--tang);vertical-align:2px}
+/* 일정 속 행사(레크리에이션) */
+.tl>li.event{background:var(--sea-soft);border-radius:12px;border-bottom:0;padding:12px 8px;margin:6px -8px}
+.tl>li.event>.what>b::after{content:"행사";margin-left:6px;font-size:.7rem;font-weight:600;padding:1px 6px;border-radius:999px;background:var(--sea);color:var(--surface);vertical-align:2px}
+.tl>li>.prog{grid-column:1/-1;min-width:0}
+details.prog{border:0;background:none;margin:4px 0 0;border-radius:0}
+details.prog>summary{display:flex;justify-content:space-between;align-items:center;cursor:pointer;list-style:none;font-size:.9rem;font-weight:600;color:var(--sea);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+details.prog>summary::-webkit-details-marker{display:none}
+details.prog>summary::after{content:"펼치기 ▾";float:none;font-size:.8rem;font-weight:500;color:var(--ink-2)}
+details.prog[open]>summary::after{content:"접기 ▴"}
+details.prog>summary:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+.prog ol{list-style:none;margin:8px 0 0;padding:0;counter-reset:r;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.prog ol li{counter-increment:r;display:grid;grid-template-columns:2rem 1fr;gap:4px;padding:9px 12px;border-top:1px solid var(--line)}
+.prog ol li:first-child{border-top:0}
+.prog ol li::before{content:counter(r);font-family:var(--mono);font-weight:600;font-size:.85rem;color:var(--sea);padding-top:1px}
+.prog ol li b{font-weight:600;font-size:.95rem}
+.prog ol li span{display:block;font-size:.86rem;color:var(--ink-2)}
+.prog .foot{font-size:.84rem;color:var(--ink-2);margin:8px 2px 0}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
 .split>div{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
 .split>div.mine{border-color:var(--tang);box-shadow:0 0 0 1px var(--tang) inset}
 .split h4{margin:0 0 4px;font-size:.92rem}
-.split .tl li{grid-template-columns:1fr;gap:0;padding:7px 0}
+.split .tl>li{grid-template-columns:1fr;gap:0;padding:7px 0}
 @media (max-width:520px){.split{grid-template-columns:1fr}}
 
 /* lists */
@@ -366,9 +383,6 @@ footer{padding-block:24px 40px;border-top:1px solid var(--line);font-size:.85rem
     </div>
   </details>
 
-  <h3>레크리에이션 · 10월 15일(목) 19:30부터</h3>
-  <p class="muted">학생회와 함께 준비한 프로그램입니다. 리조트 공연장에서 진행합니다.</p>
-  <ol class="steps" id="recrows"></ol>
 </section>
 
 <!-- 식단 -->
@@ -504,7 +518,7 @@ const DATA = {
         ["14:30~15:30","섭지코지"],
         ["16:00~17:00","제주민속촌"],
         ["18:00","숙소 도착 · 저녁 식사","리조트 식당",1],
-        ["19:30~21:00","레크리에이션","숙소 메뉴에 순서 안내"],
+        ["19:30~21:00","레크리에이션","리조트 공연장 · 학생회와 함께 준비한 프로그램",0,"rec"],
         ["22:00","인원 점검 · 취침"],
       ]},
     ]},
@@ -679,8 +693,13 @@ function renderMyCard(){
 
 /* schedule */
 function li(it){
-  const [t, w, sub, meal] = it;
-  return `<li class="${meal ? 'meal' : ''}"><span class="t">${esc(t)}</span><span class="what"><b>${esc(w)}</b>${sub ? `<span class="sub">${esc(sub)}</span>` : ""}</span></li>`;
+  const [t, w, sub, meal, extra] = it;
+  let more = "";
+  if (extra === "rec") more = `<details class="prog"><summary>프로그램 순서 보기 (${DATA.rec.length}개)</summary><ol>${
+    DATA.rec.map(r => `<li><div><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div></li>`).join("")
+  }</ol><p class="foot">장기자랑 상품이 준비되어 있습니다. 시작 전 간단한 스트레칭과 안전 교육을 합니다.</p></details>`;
+  const c = extra ? "event" : (meal ? "meal" : "");
+  return `<li class="${c}"><span class="t">${esc(t)}</span><span class="what"><b>${esc(w)}</b>${sub ? `<span class="sub">${esc(sub)}</span>` : ""}</span>${more}</li>`;
 }
 function renderDays(){
   $("#daytabs").innerHTML = DATA.days.map((d, k) =>
@@ -712,7 +731,6 @@ function renderTables(){
 
 function renderStatic(){
   $("#rainrows").innerHTML = DATA.rain.map(r => `<tr><td class="nw">${r[0]}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
-  $("#recrows").innerHTML = DATA.rec.map(r => `<li><b>${esc(r[0])}</b><br><span class="muted">${esc(r[1])}</span></li>`).join("");
   $("#mealbody").innerHTML = DATA.meals.map(d => `<h3>${d.day}</h3><div class="tbl"><table><tbody>${
     d.list.map(m => `<tr><th>${m.when}</th><td><b>${esc(m.main)}</b> <span class="muted">· ${esc(m.where)}</span><br><span class="muted">${esc(m.side)}</span></td></tr>`).join("")
   }</tbody></table></div>`).join("");
