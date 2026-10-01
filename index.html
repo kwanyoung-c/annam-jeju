@@ -1,0 +1,788 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>제주 수학여행 안내</title>
+<meta name="description" content="안남고등학교 2026 제주 수학여행(10.14~10.16) 일정·항공·버스·숙소·안전 안내">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: 한 줄 세로 흐름의 모바일 안내서. 상단 고정 목차 + 섹션 카드 최소화, 시간은 고정폭 숫자 */
+:root{
+  --bg:#f5f7f8;
+  --surface:#ffffff;
+  --ink:#16303d;
+  --ink-2:#4b5f6a;
+  --line:#dde4e8;
+  --sea:#1f6f8b;
+  --sea-soft:#e3f0f4;
+  --tang:#e2692a;
+  --tang-soft:#fdeee4;
+  --warn:#b4231b;
+  --warn-soft:#fbe9e7;
+  --ok:#2c7a4b;
+  --font:"IBM Plex Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0f181d;--surface:#16232a;--ink:#e6eef1;--ink-2:#9db0b9;--line:#26363f;
+  --sea:#6cc0dc;--sea-soft:#183440;--tang:#f39a5f;--tang-soft:#3a2518;
+  --warn:#ff8a80;--warn-soft:#3a1d1b;--ok:#7bd19c;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f181d;--surface:#16232a;--ink:#e6eef1;--ink-2:#9db0b9;--line:#26363f;
+  --sea:#6cc0dc;--sea-soft:#183440;--tang:#f39a5f;--tang-soft:#3a2518;
+  --warn:#ff8a80;--warn-soft:#3a1d1b;--ok:#7bd19c;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--sea)}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px}
+.t{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
+
+/* header */
+header.top{padding-block:28px 20px;background:var(--sea);color:#fff}
+header.top .eyebrow{font-size:.82rem;letter-spacing:.08em;opacity:.85;font-weight:500}
+header.top h1{margin:.2rem 0 .4rem;font-size:clamp(1.7rem,6vw,2.3rem);line-height:1.25;font-weight:700;text-wrap:balance}
+header.top .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.95rem;opacity:.95}
+.dday{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:rgba(255,255,255,.15);border-radius:999px;padding:6px 14px;font-weight:600;font-size:.95rem}
+
+/* nav */
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:8px}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{flex:none;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:.92rem;padding:6px 12px;border-radius:999px;white-space:nowrap}
+nav.toc a:hover,nav.toc a:focus-visible{background:var(--sea-soft);color:var(--ink)}
+nav.toc a.on{background:var(--ink);color:var(--surface)}
+
+main{padding-block:8px 60px}
+section{padding-block:24px 8px}
+/* 페이지 모드: 한 번에 한 메뉴만 보이기 */
+body.sub header.top{padding-block:14px 12px}
+body.sub header.top .meta,body.sub header.top .dday{display:none}
+body.sub header.top h1{font-size:1.15rem;margin:0}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:32px;padding-top:16px;border-top:1px solid var(--line)}
+.pager a{display:block;min-width:0;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.pager a:hover,.pager a:focus-visible{border-color:var(--sea)}
+.pager a span{display:block;font-size:.78rem;color:var(--ink-2)}
+.pager a b{font-weight:600}
+.pager a.next{grid-column:2;text-align:right}
+@media (prefers-reduced-motion:no-preference){main section:not([hidden]){animation:fade .18s ease-out}}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+h2{font-size:1.4rem;margin:0 0 4px;line-height:1.3;text-wrap:balance}
+h2 small{display:block;font-size:.8rem;font-weight:500;color:var(--ink-2);letter-spacing:.06em;margin-bottom:2px}
+h3{font-size:1.08rem;margin:24px 0 8px}
+p{margin:.4rem 0}
+.muted{color:var(--ink-2);font-size:.92rem}
+.note{font-size:.88rem;color:var(--ink-2);margin-top:10px}
+
+/* class picker */
+.picker{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:14px 0 6px}
+.picker button{font:inherit;font-weight:600;padding:10px 0;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;cursor:pointer}
+.picker button[aria-pressed="true"]{background:var(--tang);border-color:var(--tang);color:#fff}
+.picker button:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.mycard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:12px}
+.mycard dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;margin:0}
+.mycard dt{color:var(--ink-2);font-size:.9rem;padding-top:2px}
+.mycard dd{margin:0;font-weight:500;min-width:0}
+.mycard dd .t{color:var(--tang)}
+
+/* pills */
+.pill{display:inline-block;font-size:.75rem;font-weight:600;padding:1px 8px;border-radius:999px;background:var(--sea-soft);color:var(--sea);vertical-align:2px;white-space:nowrap}
+.pill.tang{background:var(--tang-soft);color:var(--tang)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+
+/* tables */
+.tbl{overflow-x:auto;margin:10px 0;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-weight:600;color:var(--ink-2);font-size:.82rem;background:var(--bg);white-space:nowrap}
+td.nw{white-space:nowrap}
+tr.mine td{background:var(--tang-soft)}
+/* 휴대폰: 넓은 표를 한 줄씩 카드처럼 쌓기 */
+@media (max-width:560px){
+  table.stack thead{display:none}
+  table.stack tr{display:block;padding:10px 14px;border-bottom:1px solid var(--line)}
+  table.stack tr:last-child{border-bottom:0}
+  table.stack td{display:block;position:relative;border:0;padding:3px 0 3px 5.4rem;white-space:normal;background:none}
+  table.stack td::before{content:attr(data-l);position:absolute;left:0;top:4px;width:5rem;color:var(--ink-2);font-size:.85rem;font-family:var(--font);font-weight:400}
+  table.stack td:first-child{padding-left:0;font-size:1.02rem;padding-bottom:4px}
+  table.stack td:first-child::before{content:none}
+  table.stack tr.mine{background:var(--tang-soft)}
+  table.stack tr.mine td{background:none}
+}
+
+/* day tabs + timeline */
+.tabs{display:flex;gap:6px;margin:14px 0 4px}
+.tabs button{flex:1;font:inherit;padding:10px 6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;cursor:pointer;line-height:1.3}
+.tabs button b{display:block;font-size:1rem}
+.tabs button span{font-size:.8rem;color:var(--ink-2)}
+.tabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.tabs button[aria-selected="true"] span{color:var(--surface);opacity:.8}
+.tabs button:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.dayhead{margin:14px 0 6px;font-weight:600}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:7.2rem 1fr;gap:10px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .t{color:var(--sea);font-size:.92rem;padding-top:1px}
+.tl .what{min-width:0}
+.tl .what b{font-weight:600}
+.tl .sub{display:block;font-size:.86rem;color:var(--ink-2)}
+.tl li.meal .what b::after{content:"식사";margin-left:6px;font-size:.7rem;font-weight:600;padding:1px 6px;border-radius:999px;background:var(--tang-soft);color:var(--tang);vertical-align:2px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.split>div{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.split>div.mine{border-color:var(--tang);box-shadow:0 0 0 1px var(--tang) inset}
+.split h4{margin:0 0 4px;font-size:.92rem}
+.split .tl li{grid-template-columns:1fr;gap:0;padding:7px 0}
+@media (max-width:520px){.split{grid-template-columns:1fr}}
+
+/* lists */
+ol.steps{margin:8px 0;padding:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:6px 0 6px 38px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:6px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--surface);font-weight:700;font-size:.85rem;display:grid;place-items:center}
+ul.dots{margin:6px 0;padding-left:1.2em}
+ul.dots li{margin:3px 0}
+.callout{border-radius:12px;padding:12px 14px;margin:12px 0;background:var(--warn-soft);color:var(--ink)}
+.callout b{color:var(--warn)}
+.callout.info{background:var(--sea-soft)}
+.callout.info b{color:var(--sea)}
+figure{margin:12px 0}
+figure a{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+figcaption{font-size:.85rem;color:var(--ink-2);margin-top:6px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--surface);margin:10px 0}
+details summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"＋";float:right;color:var(--ink-2)}
+details[open] summary::after{content:"－"}
+details .in{padding:0 14px 12px}
+
+/* checklist */
+.check{list-style:none;padding:0;margin:8px 0;columns:2;column-gap:20px}
+@media (max-width:520px){.check{columns:1}}
+.check li{break-inside:avoid;padding:4px 0}
+.check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--tang);flex:none}
+.check input:checked+span{color:var(--ink-2);text-decoration:line-through}
+.progress{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--ink-2)}
+.bar{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--tang);width:0;transition:width .2s}
+.btn{font:inherit;font-size:.85rem;padding:5px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media (max-width:520px){.contacts{grid-template-columns:1fr}}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:0}
+.contact .n{font-size:.88rem;color:var(--ink-2)}
+.contact a{font-family:var(--mono);font-weight:600;font-size:1.05rem;text-decoration:none;color:var(--ink)}
+.contact.urgent{border-color:var(--warn)}
+.contact.urgent a{color:var(--warn)}
+
+footer{padding-block:24px 40px;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">안남고등학교 · 2026 수학여행</div>
+    <h1>제주 수학여행 안내</h1>
+    <div class="meta">
+      <span>10.14(수) – 10.16(금), 2박 3일</span>
+      <span>학생 155명 · 교사 12명</span>
+    </div>
+    <div class="dday" id="dday">출발까지</div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="목차">
+  <div class="wrap">
+    <a href="#me">홈</a>
+    <a href="#schedule">일정</a>
+    <a href="#flight">항공·공항</a>
+    <a href="#checkin">체크인</a>
+    <a href="#bus">버스</a>
+    <a href="#stay">숙소</a>
+    <a href="#meal">식단</a>
+    <a href="#pack">준비물</a>
+    <a href="#safety">안전·연락처</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- 내 반 -->
+<section id="me">
+  <h2><small>MY CLASS</small>우리 반 한눈에 보기</h2>
+  <p class="muted">반을 고르면 집결 시간, 항공편, 버스, 일정 조가 표시됩니다.</p>
+  <div class="picker" id="picker" role="group" aria-label="반 선택"></div>
+  <div id="mycard"></div>
+</section>
+
+<!-- 일정 -->
+<section id="schedule">
+  <h2><small>SCHEDULE</small>세부 일정</h2>
+  <p class="muted">현지 사정에 따라 일정은 조금씩 바뀔 수 있습니다. 1일차와 3일차 오후는 조별로 움직입니다.</p>
+  <div class="tabs" role="tablist" id="daytabs"></div>
+  <div id="daybody"></div>
+
+  <details>
+    <summary>비가 오면? 우천 시 대체 프로그램</summary>
+    <div class="in">
+      <div class="tbl"><table>
+        <thead><tr><th>일자</th><th>기본 활동지</th><th>우천 시</th></tr></thead>
+        <tbody id="rainrows"></tbody>
+      </table></div>
+    </div>
+  </details>
+</section>
+
+<!-- 항공 -->
+<section id="flight">
+  <h2><small>FLIGHT</small>항공편과 김포공항 동선</h2>
+
+  <h3>가는 편 · 10월 14일(수) 김포 → 제주</h3>
+  <div class="tbl"><table class="stack">
+    <thead><tr><th>구분</th><th>반</th><th>집결</th><th>편명</th><th>출발 → 도착</th></tr></thead>
+    <tbody id="outrows"></tbody>
+  </table></div>
+
+  <h3>오는 편 · 10월 16일(금) 제주 → 김포 <span class="pill warn">반 배정 확인 중</span></h3>
+  <div class="tbl"><table class="stack">
+    <thead><tr><th>구분</th><th>반</th><th>공항 도착</th><th>편명</th><th>출발 → 도착</th></tr></thead>
+    <tbody id="backrows"></tbody>
+  </table></div>
+  <p class="note">항공사 사정으로 예약은 바뀔 수 있습니다. 변경되면 이 페이지와 반 단체방으로 다시 안내합니다.</p>
+
+  <h3>집결 장소</h3>
+  <div class="callout info"><b>김포공항 국내선 1층 6번 게이트, 롯데리아 앞</b><br>지하철에서 올라오면 오른쪽 끝 6번 게이트 방향으로 이동하세요. 집결 시간보다 10분 일찍 도착하는 것이 좋습니다.</div>
+
+  <h3>공항 안에서 이렇게 움직여요</h3>
+  <ol class="steps">
+    <li><b>1층 집결</b> 롯데리아 앞에서 반별로 모여 인원을 확인합니다. 확인이 끝난 반부터 2층으로 이동합니다.</li>
+    <li><b>2층 대한항공 카운터</b> 신분증과 모바일 탑승권을 보여 주고 캐리어를 위탁합니다. 단체 탑승이라 기내용 크기 캐리어도 모두 위탁합니다.</li>
+    <li><b>3층 약국 앞 재집결</b> 수하물 재검사 연락이 올 수 있어 약 5분 기다린 뒤 인원을 확인합니다.</li>
+    <li><b>보안검색</b> 탑승권과 신분증을 보여 주고 <b>일반 보안검색대</b>로 들어갑니다. 바이오 인증 줄은 이용하지 않습니다.</li>
+    <li><b>탑승구 대기</b> 출발 20분 전까지 안내받은 탑승구 앞에 모입니다.</li>
+  </ol>
+
+  <div class="callout"><b>캐리어를 맡긴 뒤 02로 시작하는 전화가 오면 꼭 받으세요.</b><br>위탁 수하물 재검사 연락일 수 있습니다. 연락을 받으면 바로 인솔 선생님께 알리세요.</div>
+  <div class="callout info"><b>모바일 탑승권이 안 나오면</b> 당황하지 말고 2층 대한항공 발권처로 가서 신분증을 보여 주고 종이 탑승권을 받으세요. 비상구 좌석 등은 온라인 체크인이 안 될 수 있습니다.</div>
+
+  <h3>보조배터리 규칙</h3>
+  <ul class="dots">
+    <li>캐리어에 넣어 위탁하면 안 됩니다. <b>반드시 몸에 지니고</b> 타세요.</li>
+    <li>단자에 절연테이프를 붙이거나 개별 지퍼백·파우치에 넣으세요.</li>
+    <li>기내 머리 위 선반에 두지 말고 좌석 주변에 보관하세요.</li>
+    <li>100Wh 이하, 1인 최대 5개까지 가능합니다. 일반 보조배터리(20,000mAh 이하)는 대부분 해당됩니다.</li>
+  </ul>
+
+  <figure>
+    <a href="assets/gimpo-airport.jpg" target="_blank" rel="noopener"><img src="assets/gimpo-airport.jpg" alt="김포공항 국내선 1층 집결, 2층 탑승수속, 3층 재집결과 보안검색 위치 안내도" loading="lazy"></a>
+    <figcaption>김포공항 출발 안내도. 누르면 크게 볼 수 있습니다.</figcaption>
+  </figure>
+</section>
+
+<!-- 체크인 -->
+<section id="checkin">
+  <h2><small>CHECK-IN</small>온라인 체크인 하는 법</h2>
+  <p>공항 혼잡을 줄이고 집결 시간을 줄이기 위해 <b>모든 학생이 미리 온라인 체크인</b>을 합니다.</p>
+  <div class="callout info"><b>체크인 가능 시간</b> 국내선은 출발 24시간 전부터 30분 전까지입니다.<br>
+    <span id="ciwin">1진은 10월 13일(화) 07:10부터 가능합니다.</span></div>
+
+  <h3>순서</h3>
+  <ol class="steps">
+    <li>대한항공 홈페이지(<a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com</a>) 또는 앱에 접속해 <b>체크인</b>을 누릅니다.</li>
+    <li>담임 선생님께 받은 <b>예약번호(6자리 또는 8자리)</b>를 입력하고 출발일 <b>10월 14일</b>을 선택합니다.</li>
+    <li>성과 이름을 나눠 입력하고 조회합니다. 예) 성: 홍 / 이름: 길동</li>
+    <li>목록에서 <b>본인 이름</b>을 선택합니다. 동명이인이면 생년월일로 구분하세요.</li>
+    <li>날짜·시간·편명, 성별, 생년월일, 이메일, 전화번호가 맞는지 확인하고 동의를 누릅니다.</li>
+    <li>탑승권을 <b>저장하거나 화면 캡처</b>합니다. 전화번호를 입력해 카카오톡으로 받을 수도 있습니다.</li>
+  </ol>
+  <div class="callout"><b>좌석은 절대 바꾸지 마세요.</b> 이미 배정된 좌석을 임의로 바꾸면 다른 학생과 중복되어 탑승에 문제가 생깁니다.</div>
+  <ul class="dots">
+    <li>비상구 좌석 등은 온라인 체크인이 안 될 수 있습니다. 이 경우 당일 신분증을 들고 대한항공 카운터에서 종이 탑승권을 받습니다.</li>
+    <li>체크인이 안 되면 억지로 여러 번 시도하지 말고 담임 선생님께 알려 주세요.</li>
+  </ul>
+
+  <h3>신분증 꼭 챙기기</h3>
+  <p>국내선도 <b>신분증 원본</b>이 없으면 비행기를 탈 수 없습니다. 만 19세 미만은 아래 중 하나를 준비하세요.</p>
+  <ul class="dots">
+    <li>학생증 (사진과 생년월일이 있는 것)</li>
+    <li>주민등록증, 여권</li>
+    <li>주민등록등본·초본, 가족관계증명서 (발급 3개월 이내 <b>원본</b>)</li>
+    <li>건강보험증</li>
+  </ul>
+</section>
+
+<!-- 버스 -->
+<section id="bus">
+  <h2><small>BUS</small>제주 현지 전세버스</h2>
+  <p class="muted">가자고속 · 반별로 호차가 정해져 있습니다. 차량번호는 바뀔 수 있으니 현장 안내를 따르세요.</p>
+  <div class="tbl"><table class="stack">
+    <thead><tr><th>호차</th><th>반</th><th>차량번호</th><th>학생</th><th>탑승 교사</th></tr></thead>
+    <tbody id="busrows"></tbody>
+  </table></div>
+  <ul class="dots">
+    <li>버스에서는 항상 <b>안전벨트</b>를 맵니다.</li>
+    <li>내릴 때 집합 시간과 장소를 꼭 확인하고, 이동 전 인원 점검에 협조합니다.</li>
+    <li>버스 번호판 사진을 찍어 두면 주차장에서 찾기 쉽습니다.</li>
+  </ul>
+</section>
+
+<!-- 숙소 -->
+<section id="stay">
+  <h2><small>STAY</small>숙소 · 씨오르리조트</h2>
+  <div class="tbl"><table><tbody>
+    <tr><th>주소</th><td>제주 서귀포시 이어도로 989</td></tr>
+    <tr><th>전화</th><td><a href="tel:0647390114" class="t">064-739-0114</a></td></tr>
+    <tr><th>숙박</th><td>10월 14일, 15일 2박</td></tr>
+    <tr><th>식사</th><td>조식·석식은 리조트 식당에서</td></tr>
+  </tbody></table></div>
+
+  <h3>숙소 생활 약속</h3>
+  <ul class="dots">
+    <li>객실 배정은 담임 선생님이 따로 안내합니다. 배정된 방 외의 객실은 출입하지 않습니다.</li>
+    <li><b>22:00 인원 점검 후 취침</b>입니다. 점검 뒤에는 객실 밖으로 나가지 않습니다.</li>
+    <li>객실 안에서 화기, 전열기 사용은 금지입니다.</li>
+    <li>도착하면 우리 방에서 가장 가까운 <b>비상계단 위치</b>를 먼저 확인하세요.</li>
+    <li>3일차 아침 출발 전에 짐을 챙기고 객실에 놓고 간 물건이 없는지 확인합니다.</li>
+  </ul>
+
+  <figure>
+    <a href="assets/rooms.jpg" target="_blank" rel="noopener"><img src="assets/rooms.jpg" alt="씨오르리조트 A동부터 D동까지 층별 객실 배치도" loading="lazy"></a>
+    <figcaption>객실 배치도 (A·B·C·D동). 누르면 크게 볼 수 있습니다.</figcaption>
+  </figure>
+  <details>
+    <summary>비상 대피 안내도 보기</summary>
+    <div class="in">
+      <figure><a href="assets/evac-ab.jpg" target="_blank" rel="noopener"><img src="assets/evac-ab.jpg" alt="A동·B동 비상 대피 경로" loading="lazy"></a><figcaption>A동 · B동</figcaption></figure>
+      <figure><a href="assets/evac-cd.jpg" target="_blank" rel="noopener"><img src="assets/evac-cd.jpg" alt="C동·D동 비상 대피 경로" loading="lazy"></a><figcaption>C동 · D동</figcaption></figure>
+    </div>
+  </details>
+
+  <h3>레크리에이션 · 10월 15일(목) 19:30부터</h3>
+  <p class="muted">학생회와 함께 준비한 프로그램입니다. 리조트 공연장에서 진행합니다.</p>
+  <ol class="steps" id="recrows"></ol>
+</section>
+
+<!-- 식단 -->
+<section id="meal">
+  <h2><small>MEALS</small>식단표</h2>
+  <p class="muted">메뉴는 재료 사정에 따라 바뀔 수 있습니다. 알레르기가 있으면 미리 담임 선생님께 알려 주세요.</p>
+  <div id="mealbody"></div>
+</section>
+
+<!-- 준비물 -->
+<section id="pack">
+  <h2><small>PACKING</small>준비물 체크리스트</h2>
+  <p class="muted">체크한 내용은 이 기기에만 저장됩니다. 10월 중순 제주는 낮 20℃ 안팎, 아침저녁은 쌀쌀하고 바람이 강한 편입니다(평년 기준).</p>
+  <div class="progress"><span id="packcount">0 / 0</span><div class="bar"><i id="packbar"></i></div><button class="btn" id="packreset" type="button">초기화</button></div>
+  <div id="packbody"></div>
+</section>
+
+<!-- 안전 -->
+<section id="safety">
+  <h2><small>SAFETY</small>안전 수칙과 비상 연락처</h2>
+  <ul class="dots">
+    <li>항상 <b>반별로 움직이고</b>, 혼자 떨어지지 않습니다. 길을 잃으면 그 자리에서 담임 선생님께 전화합니다.</li>
+    <li>집합 시간을 지킵니다. 늦을 것 같으면 먼저 연락합니다.</li>
+    <li>해변(협재), 해안 절벽(섭지코지, 주상절리)에서는 <b>안전선 밖으로 나가지 않고</b> 물에 들어가지 않습니다.</li>
+    <li>몸이 안 좋으면 참지 말고 바로 선생님이나 안전요원에게 말합니다.</li>
+    <li>개인 약(비염, 천식, 알레르기 등)은 본인이 챙기고, 필요하면 담임 선생님께 미리 알립니다.</li>
+  </ul>
+
+  <h3>긴급 전화</h3>
+  <div class="contacts">
+    <div class="contact urgent"><div class="n">화재 · 구급</div><a href="tel:119">119</a></div>
+    <div class="contact urgent"><div class="n">범죄 신고</div><a href="tel:112">112</a></div>
+    <div class="contact"><div class="n">숙소 씨오르리조트</div><a href="tel:0647390114">064-739-0114</a></div>
+    <div class="contact"><div class="n">전세버스 가자고속</div><a href="tel:0647227111">064-722-7111</a></div>
+    <div class="contact"><div class="n">여행사 태화관광</div><a href="tel:0324319101">032-431-9101</a></div>
+  </div>
+
+  <details>
+    <summary>활동지 주변 병원 · 보건소</summary>
+    <div class="in">
+      <p class="muted">응급실이 있는 곳은 표시했습니다. 중증 상황은 119에 먼저 연락합니다.</p>
+      <div class="tbl"><table class="stack">
+        <thead><tr><th>활동지</th><th>병원</th><th>전화</th><th>거리</th></tr></thead>
+        <tbody id="hosprows"></tbody>
+      </table></div>
+    </div>
+  </details>
+  <details>
+    <summary>경찰서 · 보건소</summary>
+    <div class="in">
+      <div class="tbl"><table>
+        <thead><tr><th>기관</th><th>전화</th></tr></thead>
+        <tbody id="policerows"></tbody>
+      </table></div>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>안남고등학교 2026 제주 수학여행 안내 · 학교 수학여행 계획서와 여행사 일정표를 바탕으로 정리했습니다.</p>
+    <p>내용이 바뀌면 이 페이지에 반영합니다. 궁금한 점은 담임 선생님께 문의하세요.</p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   여기서 내용을 고칠 수 있습니다 (DATA)
+   ===================================================================== */
+const DATA = {
+  departDate: "2026-10-14T05:50:00+09:00",
+  returnDate: "2026-10-16T20:50:00+09:00",
+
+  // 가는 편 (계획서 기준)
+  outbound: [
+    { name:"1진", classes:[2,3,4], gather:"05:50", flight:"KE1019", dep:"07:10", arr:"08:25", people:"학생 64 · 교사 5" },
+    { name:"2진", classes:[1,6,7], gather:"05:50", flight:"KE1023", dep:"07:20", arr:"08:35", people:"학생 67 · 교사 5" },
+    { name:"3진", classes:[5],     gather:"06:50", flight:"KE1045", dep:"08:20", arr:"09:35", people:"학생 24 · 교사 2" },
+  ],
+  // 오는 편 (계획서 기준 — 확인 중)
+  inbound: [
+    { name:"1진", classes:[5,6,7],   airport:"16:50", flight:"KE1294", dep:"18:15", arr:"19:30", people:"학생 69 · 교사 6" },
+    { name:"2진", classes:[1,2,3,4], airport:"17:40", flight:"KE1312", dep:"19:35", arr:"20:50", people:"학생 86 · 교사 6" },
+  ],
+
+  bus: [
+    { no:1, cls:1, plate:"제주79바5101", students:22, teachers:"담임 1" },
+    { no:2, cls:2, plate:"제주79바5103", students:21, teachers:"담임 1" },
+    { no:3, cls:3, plate:"제주79바5105", students:21, teachers:"담임 1 · 교사 1" },
+    { no:4, cls:4, plate:"제주79바5106", students:22, teachers:"담임 1 · 교감 1" },
+    { no:5, cls:5, plate:"제주79바5108", students:24, teachers:"담임 1 · 교사 1" },
+    { no:6, cls:6, plate:"제주79바5113", students:21, teachers:"담임 1 · 교사 1" },
+    { no:7, cls:7, plate:"제주79바5122", students:24, teachers:"담임 1 · 교사 1" },
+  ],
+
+  // 일정: common = 모두 함께, split = 조별 (A/B)
+  days: [
+    { label:"1일차", date:"10월 14일 (수)", blocks:[
+      { split:[
+        { name:"A조", classes:[1,2,3,4,6,7], items:[
+          ["08:25~","제주공항 도착 · 버스 탑승","1진 08:25, 2진 08:35 도착"],
+          ["09:10~10:10","한라수목원"],
+          ["10:10~11:00","포도원흑돼지","",1],
+          ["11:40~13:00","협재 해수욕장"],
+          ["13:30~14:50","파더스가든","귤 따기 체험"],
+          ["15:00~16:30","피아노 자동차 박물관"],
+          ["17:00~","숙소 도착 · 객실 배정"],
+        ]},
+        { name:"B조", classes:[5], items:[
+          ["09:35~","제주공항 도착 · 버스 탑승"],
+          ["10:20~11:20","한라수목원"],
+          ["11:20~12:10","포도원흑돼지","",1],
+          ["12:50~14:00","협재 해수욕장"],
+          ["14:30~15:50","파더스가든","귤 따기 체험"],
+          ["16:00~17:20","피아노 자동차 박물관"],
+          ["17:50~","숙소 도착 · 객실 배정"],
+        ]},
+      ]},
+      { common:[
+        ["17:30~","저녁 식사","리조트 식당 (B조는 도착 후)",1],
+        ["22:00","인원 점검 · 취침"],
+      ]},
+    ]},
+    { label:"2일차", date:"10월 15일 (목)", blocks:[
+      { common:[
+        ["06:30","기상 · 아침 식사","리조트 식당",1],
+        ["08:30","숙소 출발"],
+        ["10:00~11:20","만장굴"],
+        ["11:40~12:40","비자림"],
+        ["13:00~14:00","참더덕과흑돼지","",1],
+        ["14:30~15:30","섭지코지"],
+        ["16:00~17:00","제주민속촌"],
+        ["18:00","숙소 도착 · 저녁 식사","리조트 식당",1],
+        ["19:30~21:00","레크리에이션","숙소 메뉴에 순서 안내"],
+        ["22:00","인원 점검 · 취침"],
+      ]},
+    ]},
+    { label:"3일차", date:"10월 16일 (금)", blocks:[
+      { common:[
+        ["06:30","기상 · 아침 식사 · 짐 정리","리조트 식당",1],
+        ["08:30","숙소 출발 (퇴실)"],
+        ["09:00~10:00","대포 주상절리대"],
+        ["10:30~11:30","더마파크"],
+        ["11:50~12:50","전원일기 동광점","",1],
+      ]},
+      { split:[
+        { name:"A조 · KE1312", classes:[1,2,3,4], items:[
+          ["13:00~14:20","오설록 티 뮤지엄"],
+          ["15:20~16:40","동문시장"],
+          ["16:50~17:30","용두암"],
+          ["17:40~","제주공항 도착 · 탑승 수속"],
+          ["19:35","제주 출발 (KE1312)"],
+          ["20:50","김포공항 도착 · 귀가"],
+        ]},
+        { name:"B조 · KE1294", classes:[5,6,7], items:[
+          ["13:00~14:00","오설록 티 뮤지엄"],
+          ["15:00~16:00","동문시장"],
+          ["16:10~16:40","용두암"],
+          ["16:50~","제주공항 도착 · 탑승 수속"],
+          ["18:15","제주 출발 (KE1294)"],
+          ["19:30","김포공항 도착 · 귀가"],
+        ]},
+      ]},
+    ]},
+  ],
+
+  rain: [
+    ["1일차","한라수목원","도립미술관"],
+    ["1일차","협재 해수욕장","아르떼뮤지엄"],
+    ["1일차","파더스가든","제주항공우주박물관"],
+    ["1일차","피아노 자동차 박물관","실내, 그대로 진행"],
+    ["2일차","섭지코지","해녀박물관"],
+    ["2일차","비자림 · 만장굴","만장굴만 체험"],
+    ["2일차","제주민속촌","빛의 벙커"],
+    ["3일차","대포 주상절리","K-아일랜드 제주"],
+    ["3일차","더마파크","그대로 진행"],
+    ["3일차","오설록","제주 유리의성"],
+    ["3일차","동문시장","그대로 진행"],
+    ["3일차","용두암","국립제주박물관"],
+  ],
+
+  meals: [
+    { day:"10월 14일 (수)", list:[
+      { when:"점심", where:"포도원흑돼지", main:"갈비탕", side:"쌀밥, 김치, 깍두기, 콩나물무침" },
+      { when:"저녁", where:"리조트 식당", main:"뷔페", side:"쌀밥, 미소장국, 돼지고기볶음, 생선가스, 참치김치볶음, 스파게티, 과일주스" },
+    ]},
+    { day:"10월 15일 (목)", list:[
+      { when:"아침", where:"리조트 식당", main:"뷔페", side:"쌀밥, 어묵국, 소불고기, 스크램블, 감자튀김, 소시지, 춘권튀김, 치킨강정, 과일주스" },
+      { when:"점심", where:"참더덕과흑돼지", main:"흑돼지 두루치기", side:"쌀밥, 더덕무침, 쌈채소, 배추김치, 고사리나물" },
+      { when:"저녁", where:"리조트 식당", main:"뷔페", side:"쌀밥, 유부장국, 돼지수육, 치킨텐더, 순대, 떡볶이, 김말이, 비빔우동, 과일주스" },
+    ]},
+    { day:"10월 16일 (금)", list:[
+      { when:"아침", where:"리조트 식당", main:"뷔페", side:"쌀밥, 어묵국, 소불고기, 스크램블, 감자튀김, 소시지, 춘권튀김, 치킨강정, 과일주스" },
+      { when:"점심", where:"전원일기 동광점", main:"돔베고기 정식", side:"쌀밥, 된장국, 미트볼, 젓갈, 김치, 멸치볶음, 유채나물, 어묵조림" },
+    ]},
+  ],
+
+  rec: [
+    ["진행자 인사 · 안전 교육","행사장 자리 배정 후 시작"],
+    ["분위기 띄우기","가위바위보 게임, 칭찬하기, 반별 싱얼롱"],
+    ["스테이지 게임","선발전, 순발력 테스트, IQ 테스트"],
+    ["팀별 장기자랑","장기, 노래자랑 (상품 있음)"],
+    ["반별 게임","장르별 코믹댄스"],
+    ["어울마당","보물은 어디에, 도전 나도 스타"],
+    ["원형 파트너 게임","4·6·8인조 댄스, 세계로 떠나요"],
+    ["마무리","합창, 시상, 뒷정리"],
+  ],
+
+  pack: [
+    { group:"꼭 필요", items:["신분증 원본 (학생증 등)","모바일 탑승권 (캡처 저장)","휴대폰 · 충전기","보조배터리 (기내 휴대)","용돈 · 교통카드","개인 상비약"] },
+    { group:"옷 · 신발", items:["갈아입을 옷 2벌","잠옷","바람막이 · 가벼운 겉옷","편한 운동화","양말 · 속옷 여분"] },
+    { group:"생활용품", items:["칫솔 · 치약","세면도구 · 수건","선크림 · 모자","작은 우산 또는 우비","개인 물병","비닐봉지 (젖은 옷 · 쓰레기)"] },
+  ],
+
+  hospitals: [
+    ["한라수목원","제주한라병원","064-740-5158","3.2km · 7분",true],
+    ["협재 해수욕장 · 더마파크","한림의원","064-796-9050","4km · 7분"],
+    ["파더스가든 · 피아노 자동차 박물관 · 오설록","안덕의원","064-794-0906","5.2km · 8분"],
+    ["섭지코지","성산보건지소","064-782-2368","4.2km · 7분"],
+    ["비자림 · 만장굴","송당보건진료소","064-728-7303","3.8km · 5분"],
+    ["참더덕과흑돼지","삼달보건진료소","064-782-4936","1.2km · 2분"],
+    ["제주민속촌","표선보건지소","064-787-1304","3.2km · 5분"],
+    ["대포 주상절리","중문보건지소","064-760-6061","2.8km · 5분"],
+    ["전원일기 동광점","안덕보건지소","064-760-6817","5.5km · 8분"],
+    ["동문시장","현의원","064-725-2882","0.8km · 2분"],
+    ["용두암","한국병원","064-750-0119","1.8km · 4분",true],
+    ["씨오르리조트","서귀포의료원","064-730-3119","9.5km · 15분",true],
+  ],
+
+  police: [
+    ["제주지방경찰청 112종합상황실","064-798-3349"],
+    ["제주동부경찰서","064-752-7112"],
+    ["제주서부경찰서","064-760-1329"],
+    ["서귀포경찰서","064-760-5330"],
+    ["제주보건소","064-728-4010"],
+    ["서부보건소","064-728-4111"],
+    ["동부보건소","064-728-1515"],
+  ],
+};
+/* ===================================================================== */
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const tel = (n) => `<a href="tel:${n.replace(/-/g,'')}" class="t">${n}</a>`;
+const cls = (arr) => arr.map(c => c + "반").join(", ");
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
+  del(k){ try { localStorage.removeItem(k); } catch(e){} },
+};
+
+let myClass = parseInt(store.get("trip-class") || "0", 10) || 0;
+let day = 0;
+
+/* D-day */
+(function(){
+  const now = new Date();
+  const start = new Date(DATA.departDate), end = new Date(DATA.returnDate);
+  const el = $("#dday");
+  const toKstDay = d => Math.floor((d.getTime() + 9*3600e3) / 86400e3);
+  const diff = toKstDay(start) - toKstDay(now);
+  if (now > end) el.textContent = "수학여행이 끝났습니다. 모두 수고했어요!";
+  else if (diff <= 0) { el.textContent = `여행 ${1 - diff}일차`; day = Math.min(2, -diff); }
+  else el.textContent = `출발까지 D-${diff}`;
+})();
+
+/* picker */
+function renderPicker(){
+  $("#picker").innerHTML = [1,2,3,4,5,6,7].map(n =>
+    `<button type="button" data-c="${n}" aria-pressed="${n===myClass}">${n}반</button>`).join("");
+}
+$("#picker").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const n = +b.dataset.c;
+  myClass = (myClass === n) ? 0 : n;
+  myClass ? store.set("trip-class", myClass) : store.del("trip-class");
+  renderAll();
+});
+
+function renderMyCard(){
+  const box = $("#mycard");
+  if (!myClass){
+    box.innerHTML = `<div class="tbl"><table class="stack">
+      <thead><tr><th>반</th><th>집결</th><th>가는 편</th><th>버스</th><th>오는 편</th></tr></thead>
+      <tbody>${[1,2,3,4,5,6,7].map(c => {
+        const o = DATA.outbound.find(x => x.classes.includes(c));
+        const i = DATA.inbound.find(x => x.classes.includes(c));
+        const b = DATA.bus.find(x => x.cls === c);
+        return `<tr><td class="nw"><b>${c}반</b></td><td data-l="집결"><span class="t">${o.gather}</span></td><td class="nw" data-l="가는 편">${o.flight} <span class="t">${o.dep}</span></td><td class="nw" data-l="버스">${b.no}호차</td><td class="nw" data-l="오는 편">${i.flight} <span class="t">${i.dep}</span></td></tr>`;
+      }).join("")}</tbody></table></div>`;
+    return;
+  }
+  const o = DATA.outbound.find(x => x.classes.includes(myClass));
+  const i = DATA.inbound.find(x => x.classes.includes(myClass));
+  const b = DATA.bus.find(x => x.cls === myClass);
+  const d1 = DATA.days[0].blocks[0].split.find(g => g.classes.includes(myClass));
+  const d3 = DATA.days[2].blocks[1].split.find(g => g.classes.includes(myClass));
+  box.innerHTML = `<div class="mycard"><dl>
+    <dt>집결</dt><dd>10/14(수) <span class="t">${o.gather}</span> · 김포공항 국내선 1층 6번 게이트 롯데리아 앞</dd>
+    <dt>가는 편</dt><dd>${o.name} 대한항공 <b>${o.flight}</b> · <span class="t">${o.dep}</span> 김포 → <span class="t">${o.arr}</span> 제주</dd>
+    <dt>버스</dt><dd><b>${b.no}호차</b> · ${b.plate}</dd>
+    <dt>일정 조</dt><dd>1일차 ${d1.name.split(" ")[0]} · 3일차 오후 ${d3.name.split(" ")[0]}</dd>
+    <dt>오는 편</dt><dd>${i.name} 대한항공 <b>${i.flight}</b> · <span class="t">${i.dep}</span> 제주 → <span class="t">${i.arr}</span> 김포 <span class="pill warn">확인 중</span></dd>
+  </dl></div>`;
+}
+
+/* schedule */
+function li(it){
+  const [t, w, sub, meal] = it;
+  return `<li class="${meal ? 'meal' : ''}"><span class="t">${esc(t)}</span><span class="what"><b>${esc(w)}</b>${sub ? `<span class="sub">${esc(sub)}</span>` : ""}</span></li>`;
+}
+function renderDays(){
+  $("#daytabs").innerHTML = DATA.days.map((d, k) =>
+    `<button type="button" role="tab" aria-selected="${k===day}" data-d="${k}"><b>${d.label}</b><span>${d.date}</span></button>`).join("");
+  const d = DATA.days[day];
+  $("#daybody").innerHTML = `<div class="dayhead">${d.label} · ${d.date}</div>` + d.blocks.map(bl => {
+    if (bl.common) return `<ul class="tl">${bl.common.map(li).join("")}</ul>`;
+    return `<div class="split">${bl.split.map(g => {
+      const mine = myClass && g.classes.includes(myClass);
+      return `<div class="${mine ? 'mine' : ''}"><h4>${esc(g.name)} <span class="pill ${mine ? 'tang' : ''}">${cls(g.classes)}</span></h4><ul class="tl">${g.items.map(li).join("")}</ul></div>`;
+    }).join("")}</div>`;
+  }).join("");
+}
+$("#daytabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  day = +b.dataset.d; renderDays();
+});
+
+function renderTables(){
+  $("#outrows").innerHTML = DATA.outbound.map(o =>
+    `<tr class="${o.classes.includes(myClass) ? 'mine' : ''}"><td class="nw"><b>${o.name}</b></td><td class="nw" data-l="반">${cls(o.classes)}</td><td data-l="집결"><span class="t">${o.gather}</span></td><td class="nw" data-l="편명">${o.flight}</td><td class="nw" data-l="시간"><span class="t">${o.dep} → ${o.arr}</span></td></tr>`).join("");
+  $("#backrows").innerHTML = DATA.inbound.map(o =>
+    `<tr class="${o.classes.includes(myClass) ? 'mine' : ''}"><td class="nw"><b>${o.name}</b></td><td class="nw" data-l="반">${cls(o.classes)}</td><td data-l="공항 도착"><span class="t">${o.airport}</span></td><td class="nw" data-l="편명">${o.flight}</td><td class="nw" data-l="시간"><span class="t">${o.dep} → ${o.arr}</span></td></tr>`).join("");
+  $("#busrows").innerHTML = DATA.bus.map(b =>
+    `<tr class="${b.cls === myClass ? 'mine' : ''}"><td class="nw"><b>${b.no}호차</b></td><td class="nw" data-l="반">${b.cls}반</td><td class="nw" data-l="차량번호">${b.plate}</td><td class="nw" data-l="학생">${b.students}명</td><td class="nw" data-l="인솔">${b.teachers} · 안전요원 1</td></tr>`).join("");
+  const first = DATA.outbound[0];
+  $("#ciwin").innerHTML = DATA.outbound.map(o => `${o.name}(${o.flight}) 10월 13일(화) <span class="t">${o.dep}</span>부터`).join(" · ");
+}
+
+function renderStatic(){
+  $("#rainrows").innerHTML = DATA.rain.map(r => `<tr><td class="nw">${r[0]}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
+  $("#recrows").innerHTML = DATA.rec.map(r => `<li><b>${esc(r[0])}</b><br><span class="muted">${esc(r[1])}</span></li>`).join("");
+  $("#mealbody").innerHTML = DATA.meals.map(d => `<h3>${d.day}</h3><div class="tbl"><table><tbody>${
+    d.list.map(m => `<tr><th>${m.when}</th><td><b>${esc(m.main)}</b> <span class="muted">· ${esc(m.where)}</span><br><span class="muted">${esc(m.side)}</span></td></tr>`).join("")
+  }</tbody></table></div>`).join("");
+  $("#hosprows").innerHTML = DATA.hospitals.map(h => `<tr><td><b>${esc(h[0])}</b></td><td data-l="병원">${esc(h[1])}${h[4] ? ' <span class="pill warn">응급실</span>' : ''}</td><td class="nw" data-l="전화">${tel(h[2])}</td><td class="nw" data-l="거리">${h[3]}</td></tr>`).join("");
+  $("#policerows").innerHTML = DATA.police.map(p => `<tr><td>${esc(p[0])}</td><td class="nw">${tel(p[1])}</td></tr>`).join("");
+}
+
+/* packing */
+let packed = {};
+try { packed = JSON.parse(store.get("trip-pack") || "{}") || {}; } catch(e){ packed = {}; }
+function renderPack(){
+  let id = 0;
+  $("#packbody").innerHTML = DATA.pack.map(g => `<h3>${g.group}</h3><ul class="check">${
+    g.items.map(it => { const k = "p" + (id++); return `<li><label><input type="checkbox" id="${k}" data-k="${esc(it)}" ${packed[it] ? "checked" : ""}><span>${esc(it)}</span></label></li>`; }).join("")
+  }</ul>`).join("");
+  updatePack();
+}
+function updatePack(){
+  const all = document.querySelectorAll("#packbody input");
+  const done = [...all].filter(i => i.checked).length;
+  $("#packcount").textContent = `${done} / ${all.length}`;
+  $("#packbar").style.width = (all.length ? done / all.length * 100 : 0) + "%";
+}
+$("#packbody").addEventListener("change", e => {
+  const i = e.target; if (!i.dataset.k) return;
+  i.checked ? packed[i.dataset.k] = 1 : delete packed[i.dataset.k];
+  store.set("trip-pack", JSON.stringify(packed)); updatePack();
+});
+$("#packreset").addEventListener("click", () => { packed = {}; store.del("trip-pack"); renderPack(); });
+
+/* 메뉴별 페이지 전환 */
+const links = [...document.querySelectorAll("nav.toc a")];
+const pages = [...document.querySelectorAll("main section")];
+const names = Object.fromEntries(links.map(a => [a.getAttribute("href").slice(1), a.textContent]));
+pages.forEach((sec, k) => {
+  const prev = pages[k-1], next = pages[k+1];
+  const nav = document.createElement("div"); nav.className = "pager";
+  nav.innerHTML = (prev ? `<a href="#${prev.id}" class="prev"><span>← 이전</span><b>${names[prev.id]}</b></a>` : "")
+                + (next ? `<a href="#${next.id}" class="next"><span>다음 →</span><b>${names[next.id]}</b></a>` : "");
+  sec.appendChild(nav);
+});
+function showPage(first){
+  let id = (location.hash || "").slice(1);
+  if (!pages.some(p => p.id === id)) id = "me";
+  pages.forEach(p => p.hidden = p.id !== id);
+  document.body.classList.toggle("sub", id !== "me");
+  links.forEach(a => {
+    const on = a.getAttribute("href") === "#" + id;
+    a.classList.toggle("on", on);
+    if (on) { a.setAttribute("aria-current", "page"); a.parentElement.scrollTo({ left: a.offsetLeft - 16 }); }
+    else a.removeAttribute("aria-current");
+  });
+  if (!first) { window.scrollTo({ top: 0, behavior: "instant" }); requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" })); }
+}
+/* 메뉴 링크: 주소창 #만 바꾸고 화면은 맨 위에서 시작 */
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]'); if (!a) return;
+  const id = a.getAttribute("href").slice(1);
+  if (!pages.some(p => p.id === id)) return;
+  e.preventDefault();
+  if (location.hash === "#" + id) { window.scrollTo({ top: 0, behavior: "instant" }); return; }
+  try { history.pushState(null, "", "#" + id); showPage(false); }
+  catch (err) { location.hash = id; }
+});
+window.addEventListener("popstate", () => showPage(false));
+window.addEventListener("hashchange", () => showPage(false));
+showPage(true);
+
+function renderAll(){ renderPicker(); renderMyCard(); renderDays(); renderTables(); }
+renderAll(); renderStatic(); renderPack();
+</script>
+</body>
+</html>
