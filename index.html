@@ -176,10 +176,10 @@ figure{margin:12px 0}
 figure a{display:block;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
 figcaption{font-size:.85rem;color:var(--ink-2);margin-top:6px}
 details{border:1px solid var(--line);border-radius:12px;background:var(--surface);margin:10px 0}
-details summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none}
+details summary{cursor:pointer;padding:12px 14px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
 details summary::-webkit-details-marker{display:none}
-details summary::after{content:"＋";float:right;color:var(--ink-2)}
-details[open] summary::after{content:"－"}
+details summary::after{content:"펼치기 ▾";flex:none;font-size:.8rem;font-weight:500;color:var(--ink-2);white-space:nowrap}
+details[open] summary::after{content:"접기 ▴"}
 details .in{padding:0 14px 12px}
 
 /* checklist */
@@ -731,7 +731,7 @@ function renderTables(){
   $("#busrows").innerHTML = DATA.bus.map(b =>
     `<tr class="${b.cls === myClass ? 'mine' : ''}"><td class="nw"><b>${b.no}호차</b></td><td class="nw" data-l="반">${b.cls}반</td><td class="nw" data-l="차량번호">${b.plate}</td><td class="nw" data-l="학생">${b.students}명</td><td class="nw" data-l="인솔">${b.teachers} · 안전요원 1</td></tr>`).join("");
   const first = DATA.outbound[0];
-  $("#ciwin").innerHTML = DATA.outbound.map(o => `${o.name}(${o.flight}) 10월 13일(화) <span class="t">${o.dep}</span>부터`).join(" · ");
+  $("#ciwin").innerHTML = DATA.outbound.map(o => `${o.name}(${o.flight}) 10월 13일(화) <span class="t">${o.dep}</span>부터`).join("<br>");
 }
 
 function renderStatic(){
