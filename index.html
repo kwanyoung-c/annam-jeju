@@ -54,9 +54,12 @@ header.top .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.95rem;opaci
 
 /* nav */
 nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
-nav.toc .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:8px}
+nav.toc .wrap{display:flex;flex-wrap:wrap;gap:4px;padding-block:8px}
+nav.toc .br{flex-basis:100%;height:0}
+@media (min-width:700px){nav.toc .br{display:none}}
 nav.toc .wrap::-webkit-scrollbar{display:none}
-nav.toc a{flex:none;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:.92rem;padding:6px 12px;border-radius:999px;white-space:nowrap}
+nav.toc a{flex:1 1 auto;text-align:center;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:.9rem;padding:7px 6px;border-radius:999px;white-space:nowrap}
+@media (max-width:370px){nav.toc a{font-size:.84rem;padding-inline:4px;letter-spacing:-.02em}}
 nav.toc a:hover,nav.toc a:focus-visible{background:var(--sea-soft);color:var(--ink)}
 nav.toc a.on{background:var(--ink);color:var(--surface)}
 
@@ -224,6 +227,7 @@ footer{padding-block:24px 40px;border-top:1px solid var(--line);font-size:.85rem
     <a href="#flight">항공·공항</a>
     <a href="#checkin">체크인</a>
     <a href="#bus">버스</a>
+    <span class="br" aria-hidden="true"></span>
     <a href="#stay">숙소</a>
     <a href="#meal">식단</a>
     <a href="#pack">준비물</a>
@@ -236,7 +240,7 @@ footer{padding-block:24px 40px;border-top:1px solid var(--line);font-size:.85rem
 <!-- 내 반 -->
 <section id="me">
   <h2><small>MY CLASS</small>우리 반 한눈에 보기</h2>
-  <p class="muted">반을 고르면 집결 시간, 항공편, 버스, 일정 조가 표시됩니다.</p>
+  <p class="muted" id="pickhint">반을 누르면 우리 반의 집결 시간, 항공편, 버스, 일정 조만 볼 수 있습니다. 아래는 전체 학급 요약입니다.</p>
   <div class="picker" id="picker" role="group" aria-label="반 선택"></div>
   <div id="mycard"></div>
 </section>
@@ -664,6 +668,9 @@ $("#picker").addEventListener("click", e => {
 
 function renderMyCard(){
   const box = $("#mycard");
+  $("#pickhint").innerHTML = myClass
+    ? `지금은 <b>${myClass}반</b>만 보고 있습니다. 전체 학급을 다시 보려면 <b>${myClass}반</b>을 한 번 더 누르세요.`
+    : "반을 누르면 우리 반의 집결 시간, 항공편, 버스, 일정 조만 볼 수 있습니다. 아래는 전체 학급 요약입니다.";
   if (!myClass){
     box.innerHTML = `<div class="tbl"><table class="stack">
       <thead><tr><th>반</th><th>집결</th><th>가는 편</th><th>버스</th><th>오는 편</th></tr></thead>
